@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../sections/Hero';
+import { TrustedCompanies } from '../sections/TrustedCompanies';
 
 export const Home: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ export const Home: React.FC = () => {
       <Navbar />
       <main className="flex-1 flex flex-col">
         <Hero />
+        <TrustedCompanies />
       </main>
     </div>
   );
