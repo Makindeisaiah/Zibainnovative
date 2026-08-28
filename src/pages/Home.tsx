@@ -8,6 +8,7 @@ import { PortfolioSection } from '../sections/PortfolioSection';
 import { StrategicSolutionsSection } from '../sections/StrategicSolutionsSection';
 import { IndustriesSection } from '../sections/IndustriesSection';
 import { TeamSection } from '../sections/TeamSection';
+import { TestimonialsSection } from '../sections/TestimonialsSection';
 
 export const Home: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ export const Home: React.FC = () => {
         <StrategicSolutionsSection />
         <IndustriesSection />
         <TeamSection />
+        <TestimonialsSection />
       </main>
     </div>
   );
