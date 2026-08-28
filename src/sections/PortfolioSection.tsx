@@ -11,11 +11,19 @@ import {
   QrCode,
   Sparkles,
 } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
 import { ProjectCard, ProjectItem } from '../components/ProjectCard';
+import {
+  smoothEase,
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const PortfolioSection: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
   const [activeFilter, setActiveFilter] = useState<string>('UI/UX Design');
 
   const filterTabs = [
@@ -254,6 +262,8 @@ export const PortfolioSection: React.FC = () => {
     project.categoryFilter.includes(activeFilter)
   );
 
+  const displayProjects = filteredProjects.length > 0 ? filteredProjects : projects;
+
   return (
     <Section
       id="portfolio"
@@ -261,7 +271,7 @@ export const PortfolioSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           {/* Eyebrow Label with green decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -281,10 +291,10 @@ export const PortfolioSection: React.FC = () => {
             Explore a selection of our recent projects and see how we've helped businesses
             elevate their brand and drive measurable growth.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Filter Tabs Pill Bar */}
-        <div className="flex justify-center mb-12 sm:mb-16">
+        <RevealOnScroll delay={0.15} yOffset={16} className="flex justify-center mb-12 sm:mb-16">
           <div
             id="portfolio-filter-tabs"
             className="inline-flex flex-wrap items-center justify-center p-1.5 sm:p-2 rounded-full bg-white border border-[#E2E8F0] shadow-[0_4px_20px_rgba(0,0,0,0.04)] gap-1 sm:gap-2 max-w-full overflow-x-auto"
@@ -297,7 +307,7 @@ export const PortfolioSection: React.FC = () => {
                   id={`filter-tab-${tab.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   onClick={() => setActiveFilter(tab.id)}
                   type="button"
-                  className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer relative ${
                     isActive
                       ? 'bg-[#22C55E] text-white shadow-[0_2px_10px_rgba(34,197,94,0.35)]'
                       : 'text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
@@ -311,18 +321,33 @@ export const PortfolioSection: React.FC = () => {
               );
             })}
           </div>
-        </div>
+        </RevealOnScroll>
 
         {/* Projects Grid:
             - Desktop: 2 columns with generous cards
             - Tablet: 2 columns
             - Mobile: 1 column
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-8 lg:gap-10">
-          {(filteredProjects.length > 0 ? filteredProjects : projects).map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        <motion.div
+          layout={!shouldReduceMotion}
+          className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-8 lg:gap-10"
+        >
+          <AnimatePresence mode="popLayout">
+            {displayProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout={!shouldReduceMotion}
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.96, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: -10 }}
+                transition={{ duration: 0.45, ease: smoothEase }}
+                className="h-full"
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </Container>
     </Section>
   );

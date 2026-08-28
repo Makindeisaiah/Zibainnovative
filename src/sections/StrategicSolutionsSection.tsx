@@ -5,6 +5,11 @@ import {
   StrategicSolutionCard,
   StrategicSolutionCardProps,
 } from '../components/StrategicSolutionCard';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const StrategicSolutionsSection: React.FC = () => {
   const solutions: StrategicSolutionCardProps[] = [
@@ -43,7 +48,7 @@ export const StrategicSolutionsSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
           {/* Eyebrow with green decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -66,20 +71,25 @@ export const StrategicSolutionsSection: React.FC = () => {
               technology solutions.
             </p>
           </div>
-        </div>
+        </RevealOnScroll>
 
-        {/* 2-Column Balanced Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-10 max-w-5xl mx-auto">
+        {/* 2-Column Balanced Cards Grid with Stagger */}
+        <StaggerContainer
+          staggerDelay={0.12}
+          delayChildren={0.15}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-10 max-w-5xl mx-auto"
+        >
           {solutions.map((sol) => (
-            <StrategicSolutionCard
-              key={sol.id}
-              id={sol.id}
-              title={sol.title}
-              description={sol.description}
-              features={sol.features}
-            />
+            <StaggerItem key={sol.id} yOffset={24} className="h-full">
+              <StrategicSolutionCard
+                id={sol.id}
+                title={sol.title}
+                description={sol.description}
+                features={sol.features}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );

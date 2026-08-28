@@ -1,6 +1,11 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Instagram, Globe } from 'lucide-react';
 import { Container } from '../components/Container';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,10 +14,14 @@ export const Footer: React.FC = () => {
       className="bg-[#052414] text-white pt-16 sm:pt-20 lg:pt-24 pb-10 border-t border-[#09351E]"
     >
       <Container size="wide">
-        {/* Main Footer Multi-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-[#0E3D23]">
+        {/* Main Footer Multi-Column Grid with Stagger */}
+        <StaggerContainer
+          staggerDelay={0.07}
+          delayChildren={0.1}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-[#0E3D23]"
+        >
           {/* Col 1: Brand (lg:col-span-3) */}
-          <div className="lg:col-span-3 pr-2">
+          <StaggerItem yOffset={16} className="lg:col-span-3 pr-2">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center border border-[#166534]/50 shadow-inner">
                 <span className="text-xl font-bold text-[#22C55E]">Z</span>
@@ -24,10 +33,10 @@ export const Footer: React.FC = () => {
             <p className="text-sm sm:text-[15px] text-[#A3B899] leading-relaxed max-w-xs font-normal">
               Empowering growth through innovation and technology.
             </p>
-          </div>
+          </StaggerItem>
 
           {/* Col 2: Navigation (lg:col-span-2) */}
-          <div className="lg:col-span-2">
+          <StaggerItem yOffset={16} className="lg:col-span-2">
             <div className="mb-5 inline-block">
               <h4 className="text-[15px] font-semibold text-white tracking-tight">
                 Navigation
@@ -36,35 +45,35 @@ export const Footer: React.FC = () => {
             </div>
             <ul className="space-y-3 text-sm text-[#A3B899]">
               <li>
-                <a href="#hero" className="hover:text-white transition-colors">
+                <a href="#hero" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#services" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-white transition-colors">
+                <a href="#portfolio" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Portfolio
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">
+                <a href="#about" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#cta" className="hover:text-white transition-colors">
+                <a href="#cta" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Contact Us
                 </a>
               </li>
             </ul>
-          </div>
+          </StaggerItem>
 
           {/* Col 3: Services (lg:col-span-2) */}
-          <div className="lg:col-span-2">
+          <StaggerItem yOffset={16} className="lg:col-span-2">
             <div className="mb-5 inline-block">
               <h4 className="text-[15px] font-semibold text-white tracking-tight">
                 Services
@@ -73,35 +82,35 @@ export const Footer: React.FC = () => {
             </div>
             <ul className="space-y-3 text-sm text-[#A3B899]">
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#services" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Web Development
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#services" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Mobile Application
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#services" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   UI/UX Design
                 </a>
               </li>
               <li>
-                <a href="#strategic-solutions" className="hover:text-white transition-colors">
+                <a href="#strategic-solutions" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Product Strategy
                 </a>
               </li>
               <li>
-                <a href="#strategic-solutions" className="hover:text-white transition-colors">
+                <a href="#strategic-solutions" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Digital Consulting
                 </a>
               </li>
             </ul>
-          </div>
+          </StaggerItem>
 
           {/* Col 4: Support (lg:col-span-2) */}
-          <div className="lg:col-span-2">
+          <StaggerItem yOffset={16} className="lg:col-span-2">
             <div className="mb-5 inline-block">
               <h4 className="text-[15px] font-semibold text-white tracking-tight">
                 Support
@@ -110,30 +119,30 @@ export const Footer: React.FC = () => {
             </div>
             <ul className="space-y-3 text-sm text-[#A3B899]">
               <li>
-                <a href="#faq" className="hover:text-white transition-colors">
+                <a href="#faq" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#privacy" className="hover:text-white transition-colors">
+                <a href="#privacy" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#terms" className="hover:text-white transition-colors">
+                <a href="#terms" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#cookies" className="hover:text-white transition-colors">
+                <a href="#cookies" className="hover:text-white hover:translate-x-0.5 inline-block transition-all duration-200">
                   Cookies Policy
                 </a>
               </li>
             </ul>
-          </div>
+          </StaggerItem>
 
           {/* Col 5: Connect (lg:col-span-3) */}
-          <div className="lg:col-span-3">
+          <StaggerItem yOffset={16} className="lg:col-span-3">
             <div className="mb-5 inline-block">
               <h4 className="text-[15px] font-semibold text-white tracking-tight">
                 Connect
@@ -150,7 +159,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 aria-label="LinkedIn"
-                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] text-white flex items-center justify-center transition-all text-xs font-bold font-sans"
+                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] hover:scale-105 text-white flex items-center justify-center transition-all duration-200 text-xs font-bold font-sans"
               >
                 in
               </a>
@@ -159,7 +168,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 aria-label="X (Twitter)"
-                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] text-white flex items-center justify-center transition-all text-xs font-bold font-sans"
+                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] hover:scale-105 text-white flex items-center justify-center transition-all duration-200 text-xs font-bold font-sans"
               >
                 𝕏
               </a>
@@ -168,7 +177,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] text-white flex items-center justify-center transition-all"
+                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] hover:scale-105 text-white flex items-center justify-center transition-all duration-200"
               >
                 <Instagram className="w-4 h-4 stroke-[2]" />
               </a>
@@ -177,7 +186,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 aria-label="Website"
-                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] text-white flex items-center justify-center transition-all"
+                className="w-10 h-10 rounded-xl bg-[#0F3D24] border border-[#166534]/60 hover:border-[#22C55E] hover:bg-[#155231] hover:scale-105 text-white flex items-center justify-center transition-all duration-200"
               >
                 <Globe className="w-4 h-4 stroke-[2]" />
               </a>
@@ -208,11 +217,11 @@ export const Footer: React.FC = () => {
                 <span>Lagos, Nigeria</span>
               </li>
             </ul>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
 
         {/* Bottom Sub-Footer Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-[13px] text-[#A3B899]">
+        <RevealOnScroll yOffset={10} delay={0.2} className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-[13px] text-[#A3B899]">
           {/* Left: Copyright & Legal */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-2 gap-x-4 sm:gap-x-6">
             <span>
@@ -235,7 +244,7 @@ export const Footer: React.FC = () => {
           <div className="text-[#A3B899] hover:text-white transition-colors text-center md:text-right">
             Made by Ziba Innovations
           </div>
-        </div>
+        </RevealOnScroll>
       </Container>
     </footer>
   );

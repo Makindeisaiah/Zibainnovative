@@ -5,6 +5,11 @@ import {
   TestimonialCard,
   TestimonialItem,
 } from '../components/TestimonialCard';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const TestimonialsSection: React.FC = () => {
   const testimonials: TestimonialItem[] = [
@@ -39,7 +44,7 @@ export const TestimonialsSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
           {/* Eyebrow Label with green decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -59,18 +64,24 @@ export const TestimonialsSection: React.FC = () => {
             See how our solutions are helping companies improve efficiency, scale
             operations, and achieve measurable growth.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Testimonial Cards:
             - Desktop: 2 balanced columns
             - Tablet: 2 columns
             - Mobile: 1 column
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
+        <StaggerContainer
+          staggerDelay={0.12}
+          delayChildren={0.15}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto"
+        >
           {testimonials.map((t) => (
-            <TestimonialCard key={t.id} testimonial={t} />
+            <StaggerItem key={t.id} yOffset={24} className="h-full">
+              <TestimonialCard testimonial={t} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );

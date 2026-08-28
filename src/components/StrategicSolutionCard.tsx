@@ -17,11 +17,11 @@ export const StrategicSolutionCard: React.FC<StrategicSolutionCardProps> = ({
   return (
     <div
       id={`strategic-card-${id}`}
-      className="group bg-white rounded-[24px] sm:rounded-[28px] border border-[#E5E9EB] hover:border-[#22C55E]/50 transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] p-8 sm:p-10 lg:p-12 flex flex-col justify-between"
+      className="group bg-white rounded-[24px] sm:rounded-[28px] border border-[#E5E9EB] hover:border-[#22C55E]/50 transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_40px_rgba(0,0,0,0.07)] hover:-translate-y-1.5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full"
     >
       <div>
         {/* Card Title */}
-        <h3 className="text-2xl sm:text-[26px] lg:text-[28px] font-bold text-[#0E1322] tracking-tight mb-4">
+        <h3 className="text-2xl sm:text-[26px] lg:text-[28px] font-bold text-[#0E1322] tracking-tight mb-4 group-hover:text-[#15803D] transition-colors duration-200">
           {title}
         </h3>
 

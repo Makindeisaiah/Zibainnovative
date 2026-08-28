@@ -8,6 +8,11 @@ import {
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
 import { IndustryCard, IndustryCardProps } from '../components/IndustryCard';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const IndustriesSection: React.FC = () => {
   const industries: IndustryCardProps[] = [
@@ -232,7 +237,7 @@ export const IndustriesSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
           {/* Eyebrow Label with green decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -252,26 +257,31 @@ export const IndustriesSection: React.FC = () => {
             We help businesses across multiple industries streamline operations, improve
             efficiency, and scale through innovative digital solutions.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* 2x2 Responsive Grid:
             - Desktop: 2 columns
             - Tablet: 2 columns
             - Mobile: 1 column
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-8 lg:gap-10">
+        <StaggerContainer
+          staggerDelay={0.09}
+          delayChildren={0.15}
+          className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-8 lg:gap-10"
+        >
           {industries.map((industry) => (
-            <IndustryCard
-              key={industry.id}
-              id={industry.id}
-              icon={industry.icon}
-              title={industry.title}
-              description={industry.description}
-              features={industry.features}
-              illustration={industry.illustration}
-            />
+            <StaggerItem key={industry.id} yOffset={24} className="h-full">
+              <IndustryCard
+                id={industry.id}
+                icon={industry.icon}
+                title={industry.title}
+                description={industry.description}
+                features={industry.features}
+                illustration={industry.illustration}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );

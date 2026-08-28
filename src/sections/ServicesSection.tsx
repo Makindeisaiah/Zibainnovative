@@ -11,6 +11,11 @@ import {
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
 import { ServiceCard } from '../components/ServiceCard';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const ServicesSection: React.FC = () => {
   const services = [
@@ -331,7 +336,7 @@ export const ServicesSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           {/* Eyebrow Label with decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -354,28 +359,33 @@ export const ServicesSection: React.FC = () => {
             We provide end-to-end digital solutions to help you streamline operations,
             improve productivity, and scale your business with confidence.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Services Grid:
             - Desktop (1200px+): 3 columns
             - Tablet (768px - 1199px): 2 columns
             - Mobile (<768px): 1 column
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
-          {services.map((service, index) => {
+        <StaggerContainer
+          staggerDelay={0.08}
+          delayChildren={0.15}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-7 lg:gap-8"
+        >
+          {services.map((service) => {
             return (
-              <ServiceCard
-                key={service.idNumber}
-                idNumber={service.idNumber}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                illustration={service.illustration}
-              />
+              <StaggerItem key={service.idNumber} yOffset={24} className="h-full">
+                <ServiceCard
+                  idNumber={service.idNumber}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  illustration={service.illustration}
+                />
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );

@@ -2,6 +2,11 @@ import React from 'react';
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
 import { TeamMemberCard, TeamMember } from '../components/TeamMemberCard';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '../components/motion/MotionUtils';
 
 export const TeamSection: React.FC = () => {
   const teamMembers: TeamMember[] = [
@@ -68,7 +73,7 @@ export const TeamSection: React.FC = () => {
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
+        <RevealOnScroll delay={0.05} yOffset={20} className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-16 lg:mb-20">
           {/* Eyebrow with green decorative dashes */}
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[2px] bg-[#22C55E] rounded-full" />
@@ -88,18 +93,24 @@ export const TeamSection: React.FC = () => {
             A passionate team of designers, developers, and strategists dedicated to
             building impactful digital experience.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Team Members Grid:
             - Desktop (1200px+): 4 columns
             - Tablet (640px - 1199px): 2 columns
             - Mobile (<640px): 1 column
         */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8 max-w-7xl mx-auto">
+        <StaggerContainer
+          staggerDelay={0.08}
+          delayChildren={0.15}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8 max-w-7xl mx-auto"
+        >
           {teamMembers.map((member) => (
-            <TeamMemberCard key={member.id} member={member} />
+            <StaggerItem key={member.id} yOffset={20} className="h-full">
+              <TeamMemberCard member={member} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Container>
     </Section>
   );
