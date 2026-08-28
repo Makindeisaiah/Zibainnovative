@@ -9,6 +9,8 @@ import { StrategicSolutionsSection } from '../sections/StrategicSolutionsSection
 import { IndustriesSection } from '../sections/IndustriesSection';
 import { TeamSection } from '../sections/TeamSection';
 import { TestimonialsSection } from '../sections/TestimonialsSection';
+import { FinalCTA } from '../sections/FinalCTA';
+import { Footer } from '../components/Footer';
 
 export const Home: React.FC = () => {
   return (
@@ -24,7 +26,9 @@ export const Home: React.FC = () => {
         <IndustriesSection />
         <TeamSection />
         <TestimonialsSection />
+        <FinalCTA />
       </main>
+      <Footer />
     </div>
   );
 };
