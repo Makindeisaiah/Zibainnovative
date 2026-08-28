@@ -21,8 +21,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <a
       id={`project-card-${project.slug}`}
-      href={`#projects/${project.slug}`}
-      className="group block rounded-[24px] bg-[#0A0E1A] border border-[#1E293B]/80 hover:border-[#22C55E]/50 overflow-hidden transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 flex flex-col"
+      href={`/projects/${project.slug}`}
+      className="group block rounded-[24px] bg-[#0A0E1A] border border-[#1E293B]/80 hover:border-[#22C55E]/50 overflow-hidden transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 flex flex-col cursor-pointer"
     >
       {/* Top Preview Image Container */}
       <div
