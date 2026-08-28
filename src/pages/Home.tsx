@@ -3,6 +3,7 @@ import { Navbar } from '../components/Navbar';
 import { Hero } from '../sections/Hero';
 import { TrustedCompanies } from '../sections/TrustedCompanies';
 import { ServicesSection } from '../sections/ServicesSection';
+import { AboutSection } from '../sections/AboutSection';
 
 export const Home: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const Home: React.FC = () => {
         <Hero />
         <TrustedCompanies />
         <ServicesSection />
+        <AboutSection />
       </main>
     </div>
   );
